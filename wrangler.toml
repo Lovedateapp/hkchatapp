@@ -1,0 +1,12 @@
+name = "hkchat-app"
+compatibility_date = "2023-12-01"
+
+# Cloudflare Pages 配置
+[site]
+bucket = "./out"
+
+# D1 数据库配置
+[[d1_databases]]
+binding = "DB"
+database_name = "hkchat-db"
+database_id = ""  # 这里需要填入你创建的D1数据库ID
