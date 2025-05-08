@@ -2,6 +2,8 @@ import { NextResponse } from "next/server"
 import { createClient } from "@/lib/supabase"
 import webpush from "web-push"
 
+export const dynamic = "force-static";
+
 // 配置Web Push
 // 注意：在实际应用中，这些密钥应该存储在环境变量中
 const vapidKeys = {

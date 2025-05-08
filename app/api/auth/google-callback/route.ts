@@ -3,6 +3,8 @@ import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import type { NextRequest } from "next/server"
 
+export const dynamic = "force-static";
+
 export async function GET(request: NextRequest) {
   try {
     const requestUrl = new URL(request.url)

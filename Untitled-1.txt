@@ -1,0 +1,8 @@
+
+Warning: ini_set(): A session is active. You cannot change the session module's ini settings at this time in /home/usgazxcl/chat.usgab.com/config/config.php on line 23
+
+Warning: ini_set(): A session is active. You cannot change the session module's ini settings at this time in /home/usgazxcl/chat.usgab.com/config/config.php on line 24
+
+Warning: ini_set(): A session is active. You cannot change the session module's ini settings at this time in /home/usgazxcl/chat.usgab.com/config/config.php on line 25
+
+Fatal error: Cannot redeclare get_current_user() in /home/usgazxcl/chat.usgab.com/includes/functions.php on line 14

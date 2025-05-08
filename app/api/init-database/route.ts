@@ -1,5 +1,7 @@
 import { createClient } from "@/lib/supabase-server"
 
+export const dynamic = "force-static";
+
 export async function POST() {
   try {
     const supabase = createClient()
