@@ -10,7 +10,7 @@ const nextConfig = {
     unoptimized: true,
     formats: ['image/avif', 'image/webp'],
   },
-  output: 'export',
+  // 移除 output: 'export' 以支持API路由和动态路由
 }
 
 export default nextConfig
