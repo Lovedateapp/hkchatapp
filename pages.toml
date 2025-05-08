@@ -1,0 +1,7 @@
+# Cloudflare Pages 配置
+[build]
+command = "npm run build"
+output_directory = ".next"
+
+# 指定构建输出目录
+pages_build_output_dir = ".next"

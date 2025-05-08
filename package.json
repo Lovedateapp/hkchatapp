@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "mkdir -p out && cp -r .next/* out/",
     "start": "next start",
     "lint": "next lint",
     "pages:dev": "wrangler pages dev out --compatibility-date=2023-12-01",
