@@ -15,19 +15,6 @@ import { isUserVip } from "@/lib/check-in"
 import { extractMediaLinks, MediaPreview } from "@/lib/media-helpers"
 import { generateHKUsername } from "@/lib/username-generator"
 
-// 为静态导出生成示例用户ID
-export function generateStaticParams() {
-  // 在静态导出模式下，我们提供一些示例ID
-  // 实际部署时，这些ID将被替换为真实的用户ID
-  return [
-    { userId: "00000000-0000-0000-0000-000000000001" },
-    { userId: "00000000-0000-0000-0000-000000000002" },
-    { userId: "00000000-0000-0000-0000-000000000003" },
-    { userId: "00000000-0000-0000-0000-000000000004" },
-    { userId: "00000000-0000-0000-0000-000000000005" },
-  ]
-}
-
 // 創建消息表的函數
 async function createMessagesTable(supabase: any) {
   try {

@@ -8,14 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Loader2, ArrowLeft } from "lucide-react"
 import { createClient } from "@/lib/supabase"
 import { PostCard } from "@/components/post-card"
-import { getCategoryLabel, categories } from "@/lib/categories"
-
-// 为静态导出生成所有可能的分类路径
-export function generateStaticParams() {
-  return categories.map((category) => ({
-    slug: category.value,
-  }))
-}
+import { getCategoryLabel } from "@/lib/categories"
 
 export default function CategoryPage({ params }: { params: { slug: string } }) {
   const router = useRouter()
