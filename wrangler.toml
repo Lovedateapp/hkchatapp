@@ -3,7 +3,15 @@ compatibility_date = "2023-12-01"
 
 # Cloudflare Pages 配置
 [site]
-bucket = "./out"
+bucket = "./.next"
+
+# 指定构建输出目录
+[build]
+command = "npm run build"
+output_directory = ".next"
+
+# Cloudflare Pages 特定配置
+pages_build_output_dir = ".next"
 
 # D1 数据库配置
 [[d1_databases]]
