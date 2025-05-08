@@ -15,6 +15,19 @@ import { isUserVip } from "@/lib/check-in"
 import { extractMediaLinks, MediaPreview } from "@/lib/media-helpers"
 import { generateHKUsername } from "@/lib/username-generator"
 
+// 为静态导出生成示例用户ID
+export function generateStaticParams() {
+  // 在静态导出模式下，我们提供一些示例ID
+  // 实际部署时，这些ID将被替换为真实的用户ID
+  return [
+    { userId: "00000000-0000-0000-0000-000000000001" },
+    { userId: "00000000-0000-0000-0000-000000000002" },
+    { userId: "00000000-0000-0000-0000-000000000003" },
+    { userId: "00000000-0000-0000-0000-000000000004" },
+    { userId: "00000000-0000-0000-0000-000000000005" },
+  ]
+}
+
 // 創建消息表的函數
 async function createMessagesTable(supabase: any) {
   try {
@@ -42,25 +55,25 @@ async function createMessagesTable(supabase: any) {
         DO $$
         BEGIN
           IF NOT EXISTS (
-            SELECT 1 FROM pg_policies 
+            SELECT 1 FROM pg_policies
             WHERE tablename = 'messages' AND policyname = 'Users can view their own messages'
           ) THEN
             CREATE POLICY "Users can view their own messages" ON public.messages
               FOR SELECT
               USING (auth.uid() = sender_id OR auth.uid() = receiver_id);
           END IF;
-          
+
           IF NOT EXISTS (
-            SELECT 1 FROM pg_policies 
+            SELECT 1 FROM pg_policies
             WHERE tablename = 'messages' AND policyname = 'Users can insert messages'
           ) THEN
             CREATE POLICY "Users can insert messages" ON public.messages
               FOR INSERT
               WITH CHECK (auth.uid() = sender_id);
           END IF;
-          
+
           IF NOT EXISTS (
-            SELECT 1 FROM pg_policies 
+            SELECT 1 FROM pg_policies
             WHERE tablename = 'messages' AND policyname = 'Receivers can update read status'
           ) THEN
             CREATE POLICY "Receivers can update read status" ON public.messages
@@ -68,9 +81,9 @@ async function createMessagesTable(supabase: any) {
               USING (auth.uid() = receiver_id)
               WITH CHECK (auth.uid() = receiver_id);
           END IF;
-          
+
           IF NOT EXISTS (
-            SELECT 1 FROM pg_policies 
+            SELECT 1 FROM pg_policies
             WHERE tablename = 'messages' AND policyname = 'Users can delete their own messages'
           ) THEN
             CREATE POLICY "Users can delete their own messages" ON public.messages
@@ -120,15 +133,15 @@ async function createNotification(supabase: any, userId: string, senderId: strin
           DO $$
           BEGIN
             IF NOT EXISTS (
-              SELECT 1 FROM pg_policies 
+              SELECT 1 FROM pg_policies
               WHERE tablename = 'notifications' AND policyname = '用戶可以查看自己的通知'
             ) THEN
               CREATE POLICY "用戶可以查看自己的通知" ON public.notifications
                 FOR SELECT USING (auth.uid() = user_id);
             END IF;
-            
+
             IF NOT EXISTS (
-              SELECT 1 FROM pg_policies 
+              SELECT 1 FROM pg_policies
               WHERE tablename = 'notifications' AND policyname = '用戶可以更新自己的通知'
             ) THEN
               CREATE POLICY "用戶可以更新自己的通知" ON public.notifications

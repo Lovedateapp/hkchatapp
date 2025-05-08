@@ -8,7 +8,14 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Loader2, ArrowLeft } from "lucide-react"
 import { createClient } from "@/lib/supabase"
 import { PostCard } from "@/components/post-card"
-import { getDistrictName } from "@/lib/districts"
+import { getDistrictName, districts } from "@/lib/districts"
+
+// 为静态导出生成所有可能的地区路径
+export function generateStaticParams() {
+  return districts.map((district) => ({
+    slug: district.value,
+  }))
+}
 
 export default function DistrictPage({ params }: { params: { slug: string } }) {
   const router = useRouter()
